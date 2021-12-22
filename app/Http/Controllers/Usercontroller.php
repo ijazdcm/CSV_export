@@ -15,11 +15,11 @@ class UserController extends Controller
     {
        return view('file-import');
     }
-   
+
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function fileImport(Request $request) 
+    public function fileImport(Request $request)
     {
         Excel::import(new UsersImport, $request->file('file')->store('temp'));
         return back();
@@ -28,8 +28,9 @@ class UserController extends Controller
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function fileExport() 
+    public function fileExport()
     {
-        return Excel::download(new UsersExport, 'users-collection.xlsx');
-    }    
+        return Excel::download(new UsersExport, 'users-collection.csv');
+    }
+
 }
